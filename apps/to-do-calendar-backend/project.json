@@ -1,0 +1,52 @@
+{
+  "root": "apps/to-do-calendar-backend",
+  "sourceRoot": "apps/to-do-calendar-backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/to-do-calendar-backend",
+        "main": "apps/to-do-calendar-backend/src/main.js",
+        "tsConfig": "apps/to-do-calendar-backend/tsconfig.app.json",
+        "assets": ["apps/to-do-calendar-backend/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/to-do-calendar-backend/src/environments/environment.js",
+              "with": "apps/to-do-calendar-backend/src/environments/environment.prod.js"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "to-do-calendar-backend:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/to-do-calendar-backend/**/*.js"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/to-do-calendar-backend"],
+      "options": {
+        "jestConfig": "apps/to-do-calendar-backend/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

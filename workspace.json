@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "projects": {
+    "to-do-calendar": "apps/to-do-calendar",
+    "to-do-calendar-backend": "apps/to-do-calendar-backend",
+    "to-do-calendar-e2e": "apps/to-do-calendar-e2e"
+  }
+}

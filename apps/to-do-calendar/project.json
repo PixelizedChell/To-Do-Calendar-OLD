@@ -1,0 +1,73 @@
+{
+  "root": "apps/to-do-calendar",
+  "sourceRoot": "apps/to-do-calendar/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "development",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/to-do-calendar",
+        "index": "apps/to-do-calendar/src/index.html",
+        "baseHref": "/",
+        "main": "apps/to-do-calendar/src/main.tsx",
+        "polyfills": "apps/to-do-calendar/src/polyfills.ts",
+        "tsConfig": "apps/to-do-calendar/tsconfig.app.json",
+        "assets": [
+          "apps/to-do-calendar/src/favicon.ico",
+          "apps/to-do-calendar/src/assets"
+        ],
+        "styles": ["apps/to-do-calendar/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/to-do-calendar/src/environments/environment.ts",
+              "with": "apps/to-do-calendar/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "to-do-calendar:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "to-do-calendar:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/to-do-calendar/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/to-do-calendar"],
+      "options": {
+        "jestConfig": "apps/to-do-calendar/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
