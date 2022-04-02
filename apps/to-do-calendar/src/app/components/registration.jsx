@@ -18,15 +18,20 @@ class Registration extends React.Component {
     console.log(this.state);
     console.log('clicked');
 
-    var url = 'localhost:3333/signup';
-    console.log(this.state);
+    var url = 'http://localhost:3333/signup';
+    console.log('in submit');
+    var stringified = JSON.stringify(this.state);
+    console.log('stringified: ', stringified);
     if (this.state.firstName !== '' && this.state.lastName !== '' && this.state.password !== '') {
       return new Promise((resolve, reject) => {
         $.ajax({
           'url': url,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
           type: 'POST',
           contentType: 'application/json',
-          data: JSON.stringify(this.state),
+          data: {result: stringified},
           dataType: 'json',
           success: function (response) {
             resolve (response);

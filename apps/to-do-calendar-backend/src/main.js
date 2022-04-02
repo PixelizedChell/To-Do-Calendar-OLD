@@ -4,13 +4,19 @@
  */
 
 import * as express from 'express';
-
+var cors = require('cors');
 const app = express();
+// app.options('*', cors());
+// app.use(cors);
 
 const loginRouter = require('./routes/loginRouter.js');
 const registrationRouter = require('./routes/registrationRouter.js');
 const todoListRouter = require('./routes/todoListRouter.js');
 const calendarRouter = require('./routes/calendarRouter.js');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/login', loginRouter);
 app.use('/signup', registrationRouter);
@@ -30,7 +36,7 @@ app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to to-do-calendar-backend!' });
 });
 
-app.post('/signup2', (req, res) => {
+app.get('/signup2', (req, res) => {
   console.log('signup2 route');
   res.send('ohayo');
 });

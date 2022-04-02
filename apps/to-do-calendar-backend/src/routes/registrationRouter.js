@@ -1,4 +1,7 @@
 const registrationRouter = require('express').Router();
+var cors = require('cors');
+
+registrationRouter.options('*', cors());
 
 registrationRouter.route('/').get((req, res) => {
   console.log('get signup route');
@@ -9,7 +12,7 @@ registrationRouter.route('/').get((req, res) => {
 
 registrationRouter.route('/').post((req, res) => {
   console.log('post signup route');
-  console.log(req.data);
-  res.send('Signup List Router GET');
+  console.log(JSON.parse(req.body.result));
+  res.send('Signup List Router POST');
 });
 module.exports = registrationRouter;
