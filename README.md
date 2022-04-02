@@ -4,6 +4,22 @@
 
 This project was generated using [Nx](https://nx.dev).
 
+To start the React Dev server, run "npm run reactDev"
+To start the API server, run "npm run expressDev"
+
+key files:
+apps/to-do-calendar/src/app/app.tsx -> top level of react
+apps/to-do-calendar/src/app/components -> where to store react components
+
+apps/to-do-calendar-backend/src/main.js -> express server
+apps/to-do-calendar-backend/src/routes/ -> express router
+
+ports are:
+3333 for express
+4200 for react
+
+
+
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
 🔎 **Smart, Fast and Extensible Build System**
