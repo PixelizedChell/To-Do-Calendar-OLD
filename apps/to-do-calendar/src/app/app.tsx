@@ -15,7 +15,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Registration from './components/registration.jsx';
+import Registration from './components/authentication/registration.jsx';
 
 class App extends React.Component {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
